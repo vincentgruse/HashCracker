@@ -1,3 +1,4 @@
+# MD5 hash cracker
 This is a JavaFX application to find (brute force) the input string used to generate a given MD5 hash.
 
 The UI provides the user with the following options:
