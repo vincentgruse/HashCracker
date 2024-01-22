@@ -5,18 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
-
 import java.io.File;
-import java.util.HashMap;
 
 public class Controller {
 
     @FXML
     private TextField hashValue;
-
     @FXML
     private TextField fileLocation;
-
     @FXML
     private Label notification;
 
@@ -40,6 +36,7 @@ public class Controller {
     // Submit button event handler
     @FXML
     public void submit(ActionEvent event) {
+        System.out.println("Submit selected");
         try {
             userFilePath = fileLocation.getText();
             userHash = hashValue.getText();
@@ -48,13 +45,15 @@ public class Controller {
 
             if (Handler.isValidInput(userHash) && Handler.isValidFile(userFilePath)) {
                 new Thread(() -> {
-                    // Perform MD5 hash conversion and check if the user's hash is in the HashMap
-                    HashMap<String, String> hashMap = new HashMap<>(Handler.convertToMDFive(userFilePath));
-                    if (hashMap.containsKey(userHash)) {
+                    // Perform MD5 hash conversion and check
+                    String userString = Handler.convertToMDFive(userFilePath, userHash);
+                    if (userString != null) {
                         notification.setStyle("-fx-text-fill: green; -fx-font-weight: bold");
-                        notification.setText("User string found:\n\n" + hashMap.get(userHash));
+                        System.out.println("User string found:\n\n" + userString);
+                        notification.setText("User string found:\n\n" + userString);
                     } else {
                         notification.setStyle("-fx-text-fill: #cf2e2e; -fx-font-weight: bold");
+                        System.out.println("Hash value not found.");
                         notification.setText("Hash value not found.");
                     }
                 }).start();
@@ -72,22 +71,26 @@ public class Controller {
                 fileLocation.setStyle("-fx-border-color: #cf2e2e; -fx-border-width: 2px");
                 notification.setStyle("-fx-text-fill: #cf2e2e; -fx-font-weight: bold");
                 notification.setText("*Error: Please enter a valid MD5 Hash value.\n*Error: Please choose a valid file type (.txt).");
+                System.out.println("MD5 Hash and file location are invalid.");
             } else if (!Handler.isValidInput(userHash) && Handler.isValidFile(userFilePath)) {
                 // Handle error when only hash value is invalid
                 fileLocation.setStyle("-fx-border-color: default; -fx-border-width: default");
                 hashValue.setStyle("-fx-border-color: #cf2e2e; -fx-border-width: 2px");
                 notification.setStyle("-fx-text-fill: #cf2e2e; -fx-font-weight: bold");
                 notification.setText("*Error: Please enter a valid MD5 Hash value.");
+                System.out.println("MD5 Hash is invalid.");
             } else if (Handler.isValidInput(userHash) && !Handler.isValidFile(userFilePath)) {
                 // Handle error when only the file is invalid
                 hashValue.setStyle("-fx-border-color: default; -fx-border-width: default");
                 fileLocation.setStyle("-fx-border-color: #cf2e2e; -fx-border-width: 2px");
                 notification.setStyle("-fx-text-fill: #cf2e2e; -fx-font-weight: bold");
                 notification.setText("*Error: Please choose a valid file type (.txt).");
+                System.out.println("File location is invalid.");
             }
         } catch (Exception e) {
             // Handle unexpected exceptions
             notification.setText("Error");
+            System.out.println("Error.");
         }
     }
 }

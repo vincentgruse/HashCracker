@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
+import java.util.Objects;
 
 public class Handler {
 
@@ -41,20 +41,20 @@ public class Handler {
         }
     }
 
-    // Read inputs from a file, calculate MD5 hashes, and store in a HashMap
-    public static HashMap<String, String> convertToMDFive(String filePath) {
-        HashMap<String, String> hashMap = new HashMap<>();
-
+    // Read inputs from a file, calculates MD5 hashes, and returns string if found
+    public static String convertToMDFive(String filePath, String userHash) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String input;
             while ((input = br.readLine()) != null) {
                 String md5Hash = calcMDFive(input);
-                hashMap.put(md5Hash, input);
+                if (Objects.equals(md5Hash, userHash)) {
+                    return input;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return hashMap;
+        return null;
     }
 }
 
