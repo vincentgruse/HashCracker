@@ -12,6 +12,7 @@ If found, the application will display the matching string. Otherwise, it will d
 Directions for Building and Running from the command line:
 1. Use "java -version" to ensure JDK v.21.0.2
 2. Use "gradle -version" to ensure Gradle v.8.5
-3. unzip and open the target folder
-4. "gradlew build" to build the application
-5. "gradlew run" to run the application
+3. "git clone https://github.com/vincentgruse/HashCracker.git"
+4. "cd HashCracker"
+5. "gradlew build" to build the application
+6. "gradlew run" to run the application
