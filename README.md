@@ -1,5 +1,5 @@
 # MD5 hash cracker
-This is a JavaFX application to find (brute force) the input string used to generate a given MD5 hash.
+This is a JavaFX application that can find (brute force) the input string used to generate a given MD5 hash.
 
 The UI provides the user with the following options:
 - Provide the hash string to be cracked
@@ -9,7 +9,7 @@ The dictionary file should contain one input string per line in the file. (Examp
 
 If found, the application will display the matching string. Otherwise, it will display a failure message.
 
-Directions for Building and Running from the command line:
+# # Directions for Building and Running from the command line:
 1. Use "java -version" to ensure JDK v.21.0.2
 2. Use "gradle -version" to ensure Gradle v.8.5
 3. "git clone https://github.com/vincentgruse/HashCracker.git"
