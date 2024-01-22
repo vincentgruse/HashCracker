@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mdfive.md5cracker.Controller">
+   <Label layoutX="170.0" layoutY="23.0" text="MD5 Hash Cracker">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
+ <AnchorPane layoutX="-431.0" layoutY="255.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+   </AnchorPane>
+   <AnchorPane layoutY="59.0" prefHeight="190.0" prefWidth="300.0">
+      <TextField fx:id="hashValue" layoutX="15.0" layoutY="38.0" onAction="#submit" prefHeight="27.0" prefWidth="265.0"
+                 promptText="Enter MD5 Hash value"/>
+      <Label layoutX="15.0" layoutY="14.0" text="MD5 Hash">
+         <font>
+            <Font name="System Bold" size="10.0"/>
+         </font>
+         <padding>
+            <Insets bottom="5.0" right="5.0" top="5.0"/>
+         </padding>
+      </Label>
+      <Label layoutX="15.0" layoutY="65.0" text="Dictionary File">
+         <font>
+            <Font name="System Bold" size="10.0"/>
+         </font>
+         <padding>
+            <Insets bottom="5.0" right="5.0" top="10.0"/>
+         </padding>
+      </Label>
+      <Button layoutX="189.0" layoutY="95.0" mnemonicParsing="false" onAction="#browse" prefHeight="27.0"
+              prefWidth="86.0" style="-fx-background-radius: 5px; -fx-background-color: #cf2e2e" text="Browse Files"
+              textFill="WHITE">
+         <font>
+            <Font size="10.0"/>
+         </font>
+      </Button>
+      <TextField fx:id="fileLocation" layoutX="14.0" layoutY="95.0" onAction="#browse" prefHeight="27.0"
+                 prefWidth="175.0" promptText="Please choose a .txt file..."/>
+      <Button layoutX="75.0" layoutY="140.0" mnemonicParsing="false" onAction="#submit" prefHeight="30.0"
+              prefWidth="150.0" style="-fx-background-radius: 5px; -fx-background-color: #cf2e2e" text="Submit"
+              textFill="WHITE"/>
+   </AnchorPane>
+   <AnchorPane layoutX="300.0" layoutY="59.0" prefHeight="190.0" prefWidth="250.0">
+      <Label layoutX="14.0" layoutY="14.0" text="Output">
+         <font>
+            <Font name="System Bold" size="10.0"/>
+         </font>
+         <padding>
+            <Insets bottom="5.0" right="5.0" top="5.0"/>
+         </padding>
+      </Label>
+      <Label fx:id="notification" alignment="TOP_LEFT" layoutX="16.0" layoutY="38.0" prefHeight="144.0"
+             prefWidth="210.0" wrapText="true"/>
+      <Line endX="-100.0" endY="150.0" layoutX="100.0" layoutY="20.0" startX="-100.0" stroke="#c4c4c4"/>
+   </AnchorPane>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</AnchorPane>
