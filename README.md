@@ -14,5 +14,5 @@ If found, the application will display the matching string. Otherwise, it will d
 2. Use "gradle -version" to ensure Gradle v.8.5
 3. "git clone https://github.com/vincentgruse/HashCracker.git"
 4. "cd HashCracker"
-5. "gradlew build" to build the application
-6. "gradlew run" to run the application
+5. "gradle build" to build the application
+6. "gradle run" to run the application
